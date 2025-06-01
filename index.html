@@ -18,13 +18,19 @@
       .container {
         display: flex;
         align-items: center;
-        gap: 18px; /* Slightly less space between ticker and clock */
+        gap: 18px;
       }
       .tradingview-widget-container {
         width: 100%;
-        max-width: 800px;
-        min-width: 320px;
-        /* Emphasize the banner by allowing it to stretch more */
+        max-width: 1400px;   /* LARGER max width */
+        min-width: 600px;    /* LARGER min width */
+        height: 70px;        /* LARGER height for banner */
+        display: flex;
+        align-items: center;
+      }
+      .tradingview-widget-container__widget {
+        width: 100% !important;
+        height: 70px !important; /* Ensures widget fills container */
       }
       .clock-widget {
         background: #161616;
