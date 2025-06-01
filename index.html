@@ -18,40 +18,44 @@
       .container {
         display: flex;
         align-items: center;
-        gap: 32px;
+        gap: 18px; /* Slightly less space between ticker and clock */
       }
       .tradingview-widget-container {
         width: 100%;
         max-width: 800px;
+        min-width: 320px;
+        /* Emphasize the banner by allowing it to stretch more */
       }
       .clock-widget {
-        background: #181818;
-        color: #f2f2f7;
+        background: #161616;
+        color: #c0c0c0;
         font-family: 'SF Pro Display', 'Inter', 'Segoe UI', 'Arial', sans-serif;
         font-variant-numeric: tabular-nums;
-        font-size: 2.6rem;
-        font-weight: 700;
-        padding: 18px 36px;
-        border-radius: 28px;
-        box-shadow: 0 4px 24px 0 rgba(0,0,0,0.25), 0 1.5px 4px 0 rgba(255,255,255,0.08) inset;
-        min-width: 180px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 6px 12px;
+        border-radius: 12px;
+        box-shadow: 0 1.5px 4px 0 rgba(0,0,0,0.16);
+        min-width: 55px;
+        max-width: 72px;
         text-align: center;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
         user-select: none;
         display: flex;
         justify-content: center;
         align-items: center;
+        opacity: 0.85;
       }
       .clock-part {
         transition: color 0.2s;
       }
       .clock-colon {
-        width: 0.7em;
+        width: 0.5em;
         display: inline-block;
         transition: opacity 0.2s;
       }
       .clock-colon.blink {
-        opacity: 0.15;
+        opacity: 0.17;
       }
     </style>
   </head>
