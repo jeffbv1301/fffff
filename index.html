@@ -4,37 +4,54 @@
     <meta charset="utf-8">
     <title>Live Ticker Tape Banner</title>
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
       body {
         background: #000000;
         margin: 0;
         padding: 0;
         min-height: 100vh;
         display: flex;
-        justify-content: center; /* horizontal centering */
-        align-items: center;     /* vertical centering */
+        justify-content: center;
+        align-items: center;
         height: 100vh;
       }
       .container {
         display: flex;
         align-items: center;
-        gap: 32px; /* Space between ticker and clock */
+        gap: 32px;
       }
       .tradingview-widget-container {
         width: 100%;
-        max-width: 800px; /* Optional: limits banner width on large screens */
+        max-width: 800px;
       }
       .clock-widget {
-        color: #fff;
         background: #181818;
-        font-family: 'Segoe UI', 'Arial', sans-serif;
-        font-size: 2rem;
-        padding: 16px 32px;
-        border-radius: 12px;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.3);
-        min-width: 160px;
+        color: #f2f2f7;
+        font-family: 'SF Pro Display', 'Inter', 'Segoe UI', 'Arial', sans-serif;
+        font-variant-numeric: tabular-nums;
+        font-size: 2.6rem;
+        font-weight: 700;
+        padding: 18px 36px;
+        border-radius: 28px;
+        box-shadow: 0 4px 24px 0 rgba(0,0,0,0.25), 0 1.5px 4px 0 rgba(255,255,255,0.08) inset;
+        min-width: 180px;
         text-align: center;
         letter-spacing: 2px;
         user-select: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .clock-part {
+        transition: color 0.2s;
+      }
+      .clock-colon {
+        width: 0.7em;
+        display: inline-block;
+        transition: opacity 0.2s;
+      }
+      .clock-colon.blink {
+        opacity: 0.15;
       }
     </style>
   </head>
@@ -69,21 +86,34 @@
       </div>
       <!-- TradingView Widget END -->
 
-      <!-- Clock Widget BEGIN -->
-      <div class="clock-widget" id="clock"></div>
+      <!-- Modern iOS-style Clock Widget BEGIN -->
+      <div class="clock-widget" id="clock">
+        <span class="clock-part" id="clock-hours">--</span>
+        <span class="clock-colon" id="clock-colon">:</span>
+        <span class="clock-part" id="clock-minutes">--</span>
+        <span class="clock-colon" id="clock-colon2">:</span>
+        <span class="clock-part" id="clock-seconds">--</span>
+      </div>
       <script>
         function updateClock() {
-          const clock = document.getElementById('clock');
           const now = new Date();
           const hours = String(now.getHours()).padStart(2, '0');
           const minutes = String(now.getMinutes()).padStart(2, '0');
           const seconds = String(now.getSeconds()).padStart(2, '0');
-          clock.textContent = `${hours}:${minutes}:${seconds}`;
+
+          document.getElementById('clock-hours').textContent = hours;
+          document.getElementById('clock-minutes').textContent = minutes;
+          document.getElementById('clock-seconds').textContent = seconds;
+
+          // Blinking colon
+          const blink = now.getSeconds() % 2 === 0;
+          document.getElementById('clock-colon').classList.toggle('blink', blink);
+          document.getElementById('clock-colon2').classList.toggle('blink', blink);
         }
-        setInterval(updateClock, 1000);
+        setInterval(updateClock, 500);
         updateClock();
       </script>
-      <!-- Clock Widget END -->
+      <!-- Modern iOS-style Clock Widget END -->
     </div>
   </body>
 </html>
