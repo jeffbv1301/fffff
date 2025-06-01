@@ -22,19 +22,23 @@
       }
       .tradingview-widget-container {
         width: 100%;
-        max-width: 1400px;   /* LARGER max width */
-        min-width: 600px;    /* LARGER min width */
-        height: 70px;        /* LARGER height for banner */
+        max-width: 1400px;
+        min-width: 600px;
+        height: 70px;
         display: flex;
         align-items: center;
+        background: #191919; /* Match Notion page background */
+        border-radius: 16px;
+        box-shadow: 0 4px 24px 0 rgba(0,0,0,0.12);
+        overflow: hidden;
       }
       .tradingview-widget-container__widget {
         width: 100% !important;
-        height: 70px !important; /* Ensures widget fills container */
+        height: 70px !important;
       }
       .clock-widget {
         background: #161616;
-        color: #c0c0c0;
+        color: #f8f8fa; /* Whiter numbers */
         font-family: 'SF Pro Display', 'Inter', 'Segoe UI', 'Arial', sans-serif;
         font-variant-numeric: tabular-nums;
         font-size: 1.1rem;
@@ -50,7 +54,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        opacity: 0.85;
+        opacity: 0.90;
       }
       .clock-part {
         transition: color 0.2s;
